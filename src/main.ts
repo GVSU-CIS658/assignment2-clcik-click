@@ -67,10 +67,23 @@ function applyCream(input: HTMLInputElement): void {
 
 function applySyrup(input: HTMLInputElement): void {
   // TODO: implement this function
+  const color = syrups[input.value];
+  const syrup = document.querySelector<HTMLElement>('.syrup');
+  if (!syrup || !color) return;
+  syrup.style.setProperty('--syrup-color',color)
 }
 
 function setupSyrupListeners(): void {
   // TODO: implement this function
+  const radios = document.querySelectorAll<HTMLInputElement>(
+    'input[name="syrup"]'
+  );
+
+  radios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+      applySyrup(radio)
+    });
+  });
 }
 
 setupSyrupListeners();
