@@ -68,20 +68,23 @@ function applyCream(input: HTMLInputElement): void {
 function applySyrup(input: HTMLInputElement): void {
   // TODO: implement this function
   const color = syrups[input.value];
+  // console.log(color)
   const syrup = document.querySelector<HTMLElement>('.syrup');
+  // console.log(syrup)
   if (!syrup || !color) return;
   syrup.style.setProperty('--syrup-color',color)
 }
 
 function setupSyrupListeners(): void {
   // TODO: implement this function
-  const radios = document.querySelectorAll<HTMLInputElement>(
+  const syrups = document.querySelectorAll<HTMLInputElement>(
     'input[name="syrup"]'
   );
-
-  radios.forEach((radio) => {
-    radio.addEventListener("change", () => {
-      applySyrup(radio)
+  
+  syrups.forEach((syrup) => {
+    syrup.addEventListener("change", () => {
+      console.log(`Cream: ${syrup.value} `)
+      applySyrup(syrup)
     });
   });
 }
@@ -90,17 +93,50 @@ setupSyrupListeners();
 
 function setupCreamListeners(): void {
   // TODO: implement this function
+  const creams = document.querySelectorAll<HTMLInputElement>(
+    'input[name="cream"]'
+  );
+
+  creams.forEach((cream) => {
+    cream.addEventListener("change", () => {
+      console.log(`Cream: ${cream.value} `)
+      applyCream(cream)
+    });
+  });
+
 }
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
   // TODO: implement this function
+  const temperatures = document.querySelectorAll<HTMLInputElement>(
+    'input[name="temperature"]'
+  );
+
+  temperatures.forEach((temp) => {
+    temp.addEventListener("change", () => {   
+    console.log(`Temperature: ${temp.value} `)
+      applyTemperature(temp)
+    });
+  });
+
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
   // TODO: implement this function
+    const bases = document.querySelectorAll<HTMLInputElement>(
+    'input[name="base"]'
+  );
+
+  bases.forEach((base) => {
+    base.addEventListener("change", () => {   
+    console.log(`Base: ${base.value} `)
+      applyTemperature(base)
+    });
+  });
+
 }
 
 setupBaseListeners();
